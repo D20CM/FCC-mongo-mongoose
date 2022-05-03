@@ -13,7 +13,7 @@ const personSchema = new mongoose.Schema({
     required: true,
   },
   age: Number,
-  favoriteFoods: array[String],
+  favoriteFoods: [String],
 });
 
 let Person = mongoose.model("Person", personSchema);
