@@ -1,4 +1,5 @@
 require("dotenv").config();
+const { save } = require("mongodb/lib/operations/collection_ops");
 const mongoose = require("mongoose");
 require("dotenv");
 
@@ -64,8 +65,11 @@ const findPersonById = (personId, done) => {
 
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
-
-  done(null /*, data*/);
+  Person.findById(personId, function (err, data) {
+    data.favoriteFoods.push(foodToAdd);
+    data.save();
+    err ? console.log(err) : done(null, data);
+  });
 };
 
 const findAndUpdate = (personName, done) => {
