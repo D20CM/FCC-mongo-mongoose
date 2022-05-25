@@ -106,7 +106,7 @@ const queryChain = (done) => {
     .sort("name")
     .limit(2)
     .select("-age")
-    .exec(function (err, done) {
+    .exec(function (err, data) {
       err ? console.log(err) : done(null, data);
     });
 };
